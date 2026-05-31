@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aarya Sharma – Project Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: white; color: black; overflow-x: hidden; }
+    header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+    nav { display: flex; justify-content: center; background: #34495e; flex-wrap: wrap; }
+    nav button { background: none; border: none; color: white; padding: 14px 20px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+    nav button:hover, nav button.active { background: #2c3e50; }
+    .tabcontent { display: none; padding: 20px; background: white; margin: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); animation: fadeIn 0.6s ease-in-out; color: black; }
+    .tabcontent h2 { color: #2c3e50; }
+    .workflow { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 20px; }
+    .step { text-align: center; margin: 15px; }
+    .step i { font-size: 40px; color: #2980b9; margin-bottom: 10px; animation: pulse 2s infinite; }
+    .arrow { font-size: 30px; color: #16a085; margin: 0 10px; animation: bounce 2s infinite; }
+    footer { background: #2c3e50; color: white; text-align: center; padding: 15px; margin-top: 30px; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes pulse { 0% {opacity: 0.7;} 50% {opacity: 1;} 100% {opacity: 0.7;} }
+    @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Aarya Sharma – Project Blog</h1>
+    <p>Showcasing AI, Quantum, and Web Innovations</p>
+  </header>
+
+  <!-- Tab Navigation -->
+  <nav>
+    <button class="tablinks active" onclick="openTab(event, 'home')">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'rag')">RAG Assistant</button>
+    <button class="tablinks" onclick="openTab(event, 'interview')">Interview Generator</button>
+    <button class="tablinks" onclick="openTab(event, 'sailpoint')">SailPoint + Blockchain</button>
+    <button class="tablinks" onclick="openTab(event, 'jobmatch')">Job-Matching Website</button>
+    <button class="tablinks" onclick="openTab(event, 'quantum')">AI + Quantum Molecules</button>
+	<button class="tablinks" onclick="openTab(event, 'upsc')">UPSC Practise App</button>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="home" class="tabcontent" style="display: block;">
+    <h2>Welcome to My Project Blog</h2>
+    <p>Hello! I’m <strong>Aarya Sharma</strong>, a software developer currently working at Optum. This blog showcases my projects in AI, quantum computing, and web development.</p>
+    <p>Explore the tabs above to see detailed workflows, tech stacks, and system designs for each project.</p>
+  </div>
+
+  <!-- RAG Assistant -->
+  <div id="rag" class="tabcontent">
+    <h2>RAG-based Agriculture Assistant</h2>
+	<p>Description</p>
+	<ul><li>A domain-specific assistant designed to help farmers and researchers query agricultural PDFs with AI-powered retrieval, making knowledge more accessible and actionable.</li></ul>
+    <h3>Tech Stack</h3>
+    <p>Core Backend</p>
+	<ul>
+	<li>FastAPI → lightweight Python web framework for serving your RAG queries.</li>
+	<li>Uvicorn → ASGI server used to run FastAPI inside Docker.</li>
+	<li>Python 3.14.2 runtime version</li>
+	</ul>
+	<p>Machine Learning / RAG</p>
+	<ul>
+	<li>Hugging Face embeddings → for converting text chunks into vector representations.</li>
+	<li>ChromaDB → vector database to store and retrieve embeddings.</li>
+	<li>PDF parsing libraries (e.g., PyPDF2, pdfplumber) → to chunk and process agricultural documents.</li>
+	<li>RAG pipeline → query → embedding → vector DB retrieval → response generation.</li>
+	</ul>
+	<p>Bot Integration</p>
+	<ul>
+	<li>Telegram Bot API → connects your backend to Telegram users.</li>
+	<li>Python‑telegram‑bot library → handles commands (/start, /ask) and message flow.</li>
+	</ul>
+	<p>Containerization & Deployment</p>
+	<ul>
+	<li>Docker → packages backend and bot into reproducible containers.</li>
+	<li>Docker Hub → stores your images (rag-service, telegram-bot).</li>
+	<li>Render → cloud platform that pulls your Docker images and runs them as web services.</li>
+	<li>Environment variables → for secrets (TELEGRAM_TOKEN) and backend URL (RAG_API_URL).</li>
+	</ul>
+    <h3>System Design Workflow</h3>
+    <div class="workflow">
+      <div class="step"><i class="fa-solid fa-file-lines"></i><p>PDF Processing</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-layer-group"></i><p>Text Chunking</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-brain"></i><p>Embedding Generation</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-database"></i><p>ChromaDB Storage</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-comments"></i><p>Query Response</p></div>
+    </div>
+  </div>
+
+  <!-- Interview Generator -->
+  <div id="interview" class="tabcontent">
+    <h2>Resume-based Interview Question Generator</h2>
+	<p>Description</p>
+	<ul><li>An intelligent tool that analyzes resumes and generates tailored interview questions, helping candidates prepare more effectively for technical and behavioral rounds.</li></ul>
+    <h3>Tech Stack</h3>
+    <p>Core Frontend</p>
+	<ul>
+	<li>React - UI framework</li>
+	<li>Tailwind CSS - Utility-first CSS framework</li>
+	<li>Shadcn/UI - Accessible UI component library</li>
+	<li>Axios - HTTP client for API calls</li>
+	<li>Lucide React - Icon library</li>
+	<li>Sonner - Toast notifications</li>
+	<li>Google Fonts - Nunito & Manrope typography</li>
+	</ul>
+    <p>Backend</p>
+	<ul>
+	<li>FastAPI - Modern Python web framework</li>
+    <li>Motor - Async MongoDB driver</li>
+    <li>Pydantic - Data validation with type hints</li>
+    <li>Python-dotenv - Environment variable management</li>
+	<li>PyPDF2 - PDF file parsing</li>
+	<li>python-docx - DOCX file parsing</li>
+	<li>Requests - HTTP library for external APIs</li>
+	</ul>
+	<p>AI/ML</p>
+	<ul>
+	<li>Hugging face inference api</li>
+	</ul>
+	<p>Database</p>
+	<ul>
+	<li>MongoDB - NoSQL document database for storing resumes, questions, and interview sessions
+	</li>
+	</ul>
+
+	<p>Storage</p>
+	<ul><li>Object Storage** - File upload and storage service for resume files (PDF, DOCX, TXT).</li></ul>
+
+	<p>Infrastructure & Deployment</p>
+	<ul><li>Docker - Containerization</li>
+	<li>Kubernetes - Container orchestration</li>
+	<li>Supervisor - Process management for backend/frontend services</li>
+	<li>Nginx/Ingress - Routing and load balancing</li></ul>
+
+	<p>Development Tools</p>
+	<ul><li>Webpack - Module bundler</li>
+	<li>Babel - JavaScript transpiler</li>
+	<li>PostCSS - CSS processing</li>
+	<li>Hot Reload - Live development updates</li>
+	<li>ESLint - JavaScript linting</li>
+	<li>Ruff - Python linting</li></ul>
+
+	<p>Key Libraries</p>
+	<ul><li>UUID** - Unique ID generation</li>
+	<li>DateTime - Timestamp management</li>
+	<li>JSON - Data serialization</li>
+	</ul>
+    <h3>System Design Workflow</h3>
+    <div class="workflow">
+      <div class="step"><i class="fa-solid fa-file-upload"></i><p>Resume Upload</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-magnifying-glass"></i><p>Skill Extraction</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-code"></i><p>Question Generation</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-laptop-code"></i><p>Question Output</p></div>
+    </div>
+  </div>
+
+  <!-- SailPoint + Blockchain -->
+  <div id="sailpoint" class="tabcontent">
+    <h2>SailPoint–Blockchain Provisioning Log</h2>
+	<p>Description</p>
+	<ul><li>A secure identity management solution that logs provisioning events on the blockchain, ensuring transparency and tamper-proof audit trails for enterprises.</li></ul>
+    <h3>Tech Stack</h3>
+    <p>SailPoint IdentityIQ</p>
+	<ul>
+	<li>Core identity governance platform.</li>
+	<li>Provides provisioning workflows and rules (BeanShell/Java).</li>
+	<li>Captures events like create, update, delete.</li>
+	</ul>
+	<p>Middleware Service</p>
+	<ul>
+	<li>Built with FastAPI (Python) or Spring Boot (Java).</li>
+	<li>Exposes REST endpoints for SailPoint rules to call.</li>
+	<li>Handles authentication, retries, and payload formatting.</li>
+	</ul>
+	<p>Blockchain Platform</p>
+	<ul>
+	<li>Ethereum (public or private) or Hyperledger Fabric (enterprise).</li>
+	<li>Provides ledger immutability and distributed trust.</li>
+	<li>Stores provisioning events as transactions.</li>
+	</ul>
+	<p>Smart Contracts</p>
+	<ul>
+	<li>Written in Solidity (Ethereum) or Chaincode (Go/Java) for Hyperledger.</li>
+	<li>Functions like storeProvisioningEvent(identity, operation, timestamp) validate and record logs.</li>
+	<li>Guarantees immutability and auditability.</li>
+	</ul>
+	<p>Audit Dashboard</p>
+	<ul>
+	<li>Built with Angular.</li>
+	<li>Displays SailPoint events alongside blockchain transaction IDs.</li>
+	<li>Provides compliance reports and search filters.</li>
+	</ul>
+    <h3>System Design Workflow</h3>
+    <div class="workflow">
+      <div class="step"><i class="fa-solid fa-shield-halved"></i><p>SailPoint IdentityIQ</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-gear"></i><p>Provisioning Event</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-link"></i><p>Blockchain Ledger</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-file-contract"></i><p>Smart Contract</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-chart-line"></i><p>Audit Dashboard</p></div>
+    </div>
+  </div>
+
+  <!-- Job-Matching Website -->
+  <div id="jobmatch" class="tabcontent">
+    <h2>Job-Matching Website</h2>
+	<p>Description</p>
+	<ul><li>A smart recruitment platform that uses AI to match candidate skills with job openings, streamlining hiring and improving candidate-job fit.</li></ul>
+    <h3>Tech Stack</h3>
+    <p>Frontend</p>
+<ul><li>React 19 (with React Router 7 for routing)</li>
+<li>Tailwind CSS 3</li>
+<li>Shadcn UI components (Sheet, Select, Input, Sonner toaster, etc.)</li>
+<li>Cabinet Grotesk (display headings, via Fontshare CDN)</li>
+<li>IBM Plex Sans + IBM Plex Mono (body + metadata, via Google Fonts)</li>
+<li>Axios for API calls (with a `jobscope_token` Bearer interceptor from `localStorage`)</li>
+<li>Sonner for toast notifications</li>
+<li>CRACO as the build tool (React Scripts wrapper)</li>
+<li>Yarn package manager (per env requirement)</li>
+</ul>
+
+<p>Backend</p>
+<ul><li>FastAPI (Python web framework, all routes under `/api`)</li>
+<li>Uvicorn (ASGI server, managed by supervisor on `0.0.0.0:8001`)</li>
+<li>Motor (async MongoDB driver)</li>
+<li>APScheduler 3.11 (daily cron at 06:00 UTC for the auto-refresh)</li>
+<li>httpx (async HTTP client for the Amazon Jobs public JSON scrape)</li>
+<li>PyJWT (JWT access token signing, HS256)</li>
+<li>bcrypt (password hashing)</li>
+<li>Pydantic v2 (request/response models with EmailStr validation)</li>
+<li>emergentintegrations (Emergent's LLM wrapper library)</li>
+</ul>
+
+
+<p>AI / LLM</p>
+<ul><li>Hugging Face router/ Serverless endpoint and HF_API_KEY</li></ul>
+
+<p>Database</p>
+<ul><li>MongoDB (running locally inside the container)</li>
+<li>Collections: `users`, `jobs`, `matches`, `saved_jobs`, `system` (for last-scheduled-refresh state)</li>
+<li>Indexes: unique `users.email`, unique `jobs.id`, compound `(user_id, job_id)` on matches & saved_jobs</li>
+</ul>
+
+<p>Auth</p>
+<ul>
+<li>Custom email + password with bcrypt hashing</li>
+<li>JWT access tokens (7-day expiry), sent via `Authorization: Bearer <token>` header</li>
+<li>Token stored in `localStorage` on the frontend</li>
+</ul>
+
+<p>Job Data Sources</p>
+<ul><li>Amazon Jobs — live public JSON endpoint (`amazon.jobs/en/search.json`)</li>
+<li>Naukri.com — bot-protected → 8 curated seed listings linking to each company's live careers page</li>
+</ul>
+
+<p>Infrastructure & Tooling</p>
+<ul><li>Kubernetes container (Emergent's runtime)</li>
+<li>Supervisor (manages `backend` and `frontend` processes with hot-reload)</li>
+<li>CORS middleware allowing the frontend origin</li>
+<li>Posthog (analytics, pre-wired in `index.html`)</li>
+<li>ESLint + Ruff for JS/Python linting</li>
+</ul>
+
+    <h3>System Design Workflow</h3>
+    <div class="workflow">
+      <div class="step"><i class="fa-solid fa-user"></i><p>Candidate Profile</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-brain"></i><p>Skill Analysis</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-microchip"></i><p>AI Matching Engine</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-server"></i><p>Job Database</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-briefcase"></i><p>Recommendations</p></div>
+    </div>
+  </div>
+
+  <!-- AI + Quantum Molecules -->
+  <div id="quantum" class="tabcontent">
+    <h2>AI + Quantum Molecules</h2>
+	<p>Description</p>
+	<ul><li>A cutting-edge project combining AI and quantum computing to predict medicinal activity of molecules, accelerating drug discovery workflows.</li></ul>
+    <h3>Tech Stack</h3>
+    <p>Core ML + Chemistry</p>
+	<ul>
+	<li>Python → main programming language using google colab.</li>
+	<li>TensorFlow/Keras → for training and saving your deep learning / GNN model.</li>
+	<li>Scikit‑learn → for classical ML baselines (Random Forest, XGBoost).</li>
+	<li>RDKit → to generate molecular fingerprints and descriptors.</li>
+	<li>PubChemPy → to convert chemical names into SMILES strings.</li>
+	</ul>
+	<p>Quantum Computing</p>
+	<ul>
+	<li>Flask or FastAPI → lightweight Python web frameworks to expose your model as an API.</li>
+	<li>Joblib → for saving/loading scikit‑learn models.</li>
+	<li>TensorFlow model loader → for .keras deep learning models.</li>
+	</ul>
+	<p>Frontend (Website)</p>
+	<ul>
+	<li>React → modern JavaScript framework for building the user interface.</li>
+	<li>Alternatively: Flask templates or HTML/CSS/JS if you want something simpler.</li>
+	</ul>
+	<p>Deployment Tools</p>
+	<ul>
+	<li>Heroku → easiest cloud deployment option.</li>
+	</ul>
+    <h3>System Design Workflow</h3>
+    <div class="workflow">
+      <div class="step"><i class="fa-solid fa-flask"></i><p>Data Loading (QM9 Dataset)</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-cogs"></i><p>Feature Extraction (RDKit, PCA)</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-microchip"></i><p>Quantum Circuit Encoding (PennyLane)</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-brain"></i><p>Variational Quantum Circuit Training</p></div>
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step"><i class="fa-solid fa-chart-line"></i><p>Property Prediction & Evaluation</p></div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- UPSC Project -->
+<div id="upsc" class="tabcontent">
+  <h2>UPSC Preparation & AI Evaluation Platform</h2>
+  <p>Description</p>
+  <ul><li>A mobile-first app built with Flutter and Firebase that helps UPSC aspirants manage profiles, toggle study themes, reset passwords, and sync progress with a backend API.</li></ul>
+  <h3>Tech Stack</h3>
+  <p>Frontend UI</p>
+  <ul>
+  <li>Flutter -> Cross‑platform mobile app framework (widgets, Material UI, state management).</li>
+  </ul>
+  <p>AI agent</p>
+  <ul>
+  <li>Hugging Face -> katanemo/Arch-Router-1.5B<li>
+  </ul>
+  <p>Database (primary)</p>
+  <ul>
+  <li>Firebase Firestore -> Stores user profile data (users collection with fullName, phone, email)</li>
+  </ul>
+  <p>Database (secondary)</p>
+  <ul>
+  <li>MySQL Database -> Stores user's test data and scores.</li>
+  </ul>
+  <p>Authentication</p>
+  <ul>
+  <li>Firebase Auth	Handles login, logout, password reset</li>
+  </ul>
+  <p>Backend API</p>
+  <ul>
+  <li>Node.js/Express (hosted on Render) -> Syncs user profile data with your server DB via REST endpoints (/users/sync-user/:id)</li>
+  </ul>
+  <p>Networking</p>
+  <ul>
+  <li>http package -> Makes REST API calls to backend</li>
+  </ul>
+  <p>Local storage</p>
+  <ul>
+  <li>SharedPreferences -> Persists theme preference (dark/light mode)</li>
+  </ul>
+  <p>State management</p>
+  <ul>
+  <li>Flutter StatefulWidget + setState	Manages UI updates after profile edits</li>
+  </ul>
+  <h3>System Design Workflow</h3>
+  <div class="workflow">
+    <div class="step"><i class="fa-solid fa-book-open"></i><p>Profile Data Load</p></div>
+    <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step"><i class="fa-solid fa-user-edit"></i><p>Edit Profile</p></div>
+    <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step"><i class="fa-solid fa-sync"></i><p>Sync with Backend</p></div>
+    <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step"><i class="fa-solid fa-moon"></i><p>Theme Toggle</p></div>
+    <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step"><i class="fa-solid fa-envelope"></i><p>Password Reset</p></div>
+    <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step"><i class="fa-solid fa-sign-out-alt"></i><p>Sign Out</p></div>
+  </div>
+
+  <h3>How It Works Together</h3>
+  <ul>
+    <li><strong>Profile data load:</strong> <code>_loadUserProfile()</code> fetches data from Firestore.</li>
+    <li><strong>Edit profile:</strong> <code>_updateProfile()</code> updates Firestore and syncs with backend DB.</li>
+    <li><strong>Theme toggle:</strong> <code>_toggleTheme()</code> saves preference in SharedPreferences.</li>
+    <li><strong>Password reset:</strong> <code>_sendPasswordReset()</code> triggers Firebase Auth email reset.</li>
+    <li><strong>Sign out:</strong> <code>FirebaseAuth.instance.signOut()</code> clears session and navigates to login.</li>
+  </ul>
+</div>
+
+  <canvas id="threejs-canvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script>
+    // Tab navigation script
+    function openTab(evt, tabName) {
+      const tabcontents = document.querySelectorAll('.tabcontent');
+      tabcontents.forEach(tc => tc.style.display = 'none');
+      const tablinks = document.querySelectorAll('.tablinks');
+      tablinks.forEach(tl => tl.classList.remove('active'));
+      document.getElementById(tabName).style.display = 'block';
+      evt.currentTarget.classList.add('active');
+    }
+
+  </script>
+
+  <footer>
+    <p>Working is fun!</p>
+  </footer>
+</body>
+</html>
